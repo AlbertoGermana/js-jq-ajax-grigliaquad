@@ -26,19 +26,17 @@ $(document).ready(function(){
     }
 
     $('.quadrato').on('click', function(){
-        var self = $(this);     
-        
+        var self = $(this);  
         if(self.hasClass('centered')){
             alert('Hai già cliccato questo quadrato');
         }else{
-
             $.ajax({
-                url: "https://flynn.boolean.careers/exercises/api/random/intw",
+                url: "https://flynn.boolean.careers/exercises/api/random/int",
                 method: "GET",
                 success: function(data, stato){
                     console.log(data.response);
                     if(data.response <= 5){
-                        self.addClass('yellow centered');
+                        self.addClass('red centered');
                         self.append('<p>' + data.response + '</p>');
                     }else{
                         self.addClass('green centered');
