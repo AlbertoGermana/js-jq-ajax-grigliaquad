@@ -1,13 +1,4 @@
 $(document).ready(function(){
-   /*  $.ajax({
-        url : 'https://flynn.boolean.careers/exercises/api/random/name',
-        method : "GET",
-        success : function(data, status){
-            var nome = data.response;
-            $('#nome').text(nome);
-        },
-        error : function(richiesta, stato, errori){}
-    }) */
     var api = [
         'https://flynn.boolean.careers/exercises/api/random/name',
         'https://flynn.boolean.careers/exercises/api/random/word',
@@ -22,15 +13,12 @@ $(document).ready(function(){
     $(accauno).text("Questa è una prova");
 
     for(var i = 0; i < $('.siteContainer p').length; i++){
-        elemento = htmlElements[i];
-        /* console.log(elemento); */
-        
         $.ajax({
             url : api[i],
             method : "GET",
             success : function(data, status){
-                $(elemento).text(data.response);
-                console.log(elemento);
+                $(htmlElements[i]).append(data.response);
+                console.log(htmlElements[i]);
             },
             error : function(richiesta, stato, errori){}
         })
