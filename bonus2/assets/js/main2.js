@@ -1,4 +1,13 @@
 $(document).ready(function(){
+   /*  $.ajax({
+        url : 'https://flynn.boolean.careers/exercises/api/random/name',
+        method : "GET",
+        success : function(data, status){
+            var nome = data.response;
+            $('#nome').text(nome);
+        },
+        error : function(richiesta, stato, errori){}
+    }) */
     var api = [
         'https://flynn.boolean.careers/exercises/api/random/name',
         'https://flynn.boolean.careers/exercises/api/random/word',
@@ -14,21 +23,20 @@ $(document).ready(function(){
 
     for(var i = 0; i < $('.siteContainer p').length; i++){
         elemento = htmlElements[i];
-        console.log(elemento);
-        funzioneAjax(i)
-    }    
-    
-    function funzioneAjax(indice){
+        /* console.log(elemento); */
+        
         $.ajax({
-            url : api[indice],
+            url : api[i],
             method : "GET",
             success : function(data, status){
-                elemento = htmlElements[indice];
-                console.log(api[indice]);
-                $(elemento).append(data.response );
+                $(elemento).text(data.response);
                 console.log(elemento);
             },
             error : function(richiesta, stato, errori){}
         })
-    }   
+                
+    }
+
+
+
 })
